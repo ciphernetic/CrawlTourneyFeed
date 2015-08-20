@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="CrawlApp">
 	<head>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -7,12 +7,43 @@
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 		<title>DCSS Feed</title>
+		<style>
+			.good {
+				color: #00F;
+			}
+			
+			.neutral {
+				color: #000;
+			}
+			
+			.bad {
+				color: #F00;
+			}
+		</style>
 	</head>
 	<body>
-		<div class='container'>
+		<div class='container' ng-controller="AppCtrl">
 			<h1>Don't Make the Wrong Choice</h1>
+			
+			<table class='table'>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Char</th>
+						<th>Message<th>
+					</tr>
+				<thead>
+				<tbody>
+					<tr ng-repeat="milestone in Milestones">
+						<td class='{{milestone.MessageQuality}}'>{{milestone.Name}}</td>
+						<td class='{{milestone.MessageQuality}}'>{{milestone.Level}} {{milestone.Combo}}</td>
+						<td class='{{milestone.MessageQuality}}'>{{milestone.Message}}</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		
 		<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js'></script>
+		<script src='controllers/IndexController.js'></script>
 	</body>
 </html>
